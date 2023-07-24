@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="mem" class="com.sist.main2.Member"
+		p:id="hong"
+		p:name="홍길동"
+		p:sex="남자"
+	/>
+	<!-- 
+		Member클래스의 멤버변수에 값을 채운후에 메모리에 할당한다.
+		아래와 같이 코드를 만든다.
+		@getter
+		@setter
+		public class Member{
+			private string id, name, sex
+			public member(){
+				setId("hong")
+				setName("호익ㄹ동")
+				setSex("남자")
+			}
+		}
+		
+		key				address
+		mem				Class.forname("com.sist.main2.Member") -> 100이라는 주소값이 있다고 가정
+		
+		mem				100
+		sa				200
+		std				300
+	 -->
+
+
+</beans>

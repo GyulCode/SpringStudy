@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	public classi Member
+	{
+	private String id,name;
+	public Member(string id, string name)
+	{
+		this.id=id
+		this.name=name
+	}
+
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 아래는 default생성자 호출법 -->
+	<bean id="mem1" class="com.sist.main2.Member">
+		<constructor-arg index="0"><value>hong</value></constructor-arg>
+		<constructor-arg index="1"><value>홍길동</value></constructor-arg>
+		<constructor-arg index="2"><value>서울</value></constructor-arg>
+		<constructor-arg index="3"><value>111-111</value></constructor-arg>
+		<constructor-arg index="4"><value>남자</value></constructor-arg>
+	</bean>
+	
+	<bean id="mem2" class="com.sist.main2.Member">
+		<constructor-arg index="0" value="park"/>
+		<constructor-arg index="1" value="박문수"/>
+		<constructor-arg index="2" value="경기"/>
+		<constructor-arg index="3" value="222-222"/>
+		<constructor-arg index="4" value="여자"/>
+	</bean>
+	<bean id="mem3" class="com.sist.main2.Member"
+		c:id="shim"
+		c:name="심청이"
+		c:address="강원"
+		c:phone="333-333"
+		c:sex="여자"
+	/>
+	
+	<bean id="mem4" class="com.sist.main2.Member"
+		c:_0="shin"
+		c:_1="짱구"
+		c:_2="떡잎 마을"
+		c:_3="444-444"
+		c:_4="남자"
+	/>
+	
+	
+	
+	
+
+
+</beans>
