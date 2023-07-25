@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.sist.dao.emp-mapper">
+ 	<select id="empListData" resultType="EmpVO"> <!-- resultType="EmpVO" 실행한 결과값을 받을곳 어디로 받을지 -->
+ 		SELECT empno, ename, job, hiredate, sal
+ 		FROM Emp
+ 		ORDER BY sal DESC
+ 	</select>
+ 	<select id="empDetailData" resultType="EmpVO" parameterType="int"> 
+		 <!-- parameterType="int" ps.setInt() ?에 값 넣던 작업-->
+		 <!-- to_char 같은 함수 사용시 as사용  -->
+		 SELECT empno, ename,job,hiredate,TO_CHAR(hiredate,'YYYY-DD-MM') as dbday, sal, comm, mgr, deptno
+		 FROM emp
+		 WHERE empno=#{empno}
+		 <!-- #변수명 이면 get메소드 --> 		
+ 	</select>
+ </mapper>

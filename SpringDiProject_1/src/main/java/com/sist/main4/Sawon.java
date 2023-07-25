@@ -10,7 +10,9 @@ import lombok.Setter;
 public class Sawon {
 	private int sabun, pay;
 	private String name, dept, job;
-	public Sawon() {}
+	public Sawon() {
+		System.out.println("사원의 생성자 호출");
+	}
 	
 	
 	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MyBatis : Connection (전체 SQL을 모아준다) -->
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <configuration>
+		 <!-- 
+		 등록해야 하는 내용
+		 1. SQL 문장
+		 2. VO등록
+		 3. 입력값 설정
+		  -->
+		 <!-- 
+		 configuration 얘는 순서가 있어서 아래와 같은 순서대로 선언해줘야 한다. ?는 사용해도되고 안해도되는 속성임
+		 (properties?, settings?, typeAliases?, typeHandlers?, objectFactory?, objectWrapperFactory?, 
+		 reflectorFactory?, plugins?, environments?, databaseIdProvider?, mappers?)
+		  -->
+		  
+ <!--  typeAliases는 VO 등록 위치임 -->
+ <typeAliases>
+ 	<typeAlias type="com.sist.dao.EmpVO" alias="EmpVO"/>
+ 	<typeAlias type="com.sist.dao.DeptVO" alias="DeptVO"/>
+ </typeAliases>
+ 
+ <mappers>
+ 	<!-- 여기는 .아니라 / 유의! include문장임 -->
+	<mapper resource="com/sist/dao/emp-mapper.xml"/> 
+ </mappers>
+ 
+ </configuration>

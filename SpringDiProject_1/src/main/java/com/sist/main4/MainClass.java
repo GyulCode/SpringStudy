@@ -21,11 +21,11 @@ public class MainClass {
 		//ApplicationContext app=new ClassPathXmlApplicationContext("app.xml4");
 		GenericXmlApplicationContext app= new GenericXmlApplicationContext("app4.xml"); //위에꺼 다음버전 close할려고 사용
 		
-		/*Sawon sa=(Sawon)app.getBean("sa1");
+		Sawon sa=(Sawon)app.getBean("sa1");
 		//sa.init()
 		sa.print();
 		//sa.destroy() - 스프링이 닫겨야 수행됨
-		app.close();*/
+		app.close();
 		
 
 	}

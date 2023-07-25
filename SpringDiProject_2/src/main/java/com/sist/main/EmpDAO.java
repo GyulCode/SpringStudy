@@ -52,7 +52,7 @@ public class EmpDAO {
 		List<EmpVO>list=new ArrayList<EmpVO>();
 		try {
 			getConnection();
-			String sql="SELECT empno, ename, job, hiredate, sal"
+			String sql="SELECT empno, ename, job, hiredate, sal "
 					+ "FROM emp";
 			ps=conn.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();

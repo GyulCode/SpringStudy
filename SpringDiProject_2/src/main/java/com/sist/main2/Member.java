@@ -10,7 +10,7 @@ public class Member {
 	private String id, name, sex;
 	
 	public void init() {
-		System.out.println("========= ¸â¹ö Á¤º¸ ==========");
+		System.out.println("========= ¸â¹ö Á¤º¸ ========== init");
 		
 	}
 	public void print() {

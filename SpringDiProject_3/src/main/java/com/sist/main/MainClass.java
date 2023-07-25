@@ -11,7 +11,7 @@ public class MainClass {
 	private GoodsDAO dao;
 	
 	public static void main(String[] args) {
-		ApplicationContext app=new ClassPathXmlApplicationContext();
+		ApplicationContext app=new ClassPathXmlApplicationContext("app.xml");
 		//MainClass mc =new MainClass(); 이코드는 오류
 		MainClass mc=(MainClass)app.getBean("mc");
 		 

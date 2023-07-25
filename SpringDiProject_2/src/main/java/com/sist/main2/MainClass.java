@@ -7,6 +7,7 @@ public class MainClass {
 	public static void main(String[] args) {
 		//String[] xml= {"member.xml","sawon.xml","student.xml"};
 		ApplicationContext app=new ClassPathXmlApplicationContext("app-*.xml");
+		System.out.println("xml 읽은후");
 		
 		Sawon s=(Sawon)app.getBean("sa");
 		s.init(); //스프링 자체에서 처리
