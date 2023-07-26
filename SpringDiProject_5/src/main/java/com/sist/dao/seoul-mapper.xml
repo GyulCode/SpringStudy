@@ -5,7 +5,7 @@
  <mapper namespace="com.sist.dao.seoul-mapper">
  	<!--
  		입력값이 여러개 있을때 = start, end
- 		resultType : sql실행 결과값을 받을 자료형(int, String, vo[2개이 상을 sql에서 조회해올떄])
+ 		resultType : sql실행 결과값을 받을 자료형(int, String, vo[2개 이상을 sql에서 조회해올떄])
  		select pwd, name from member -> resultType=MemberVO 또는 hashMap도 가능
  		
  	 -->

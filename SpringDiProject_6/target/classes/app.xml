@@ -5,15 +5,13 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-	
-	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="oracle.jdbc.driver.OracleDriver"
-		p:url="jdbc:oracle:thin:@localhost:1521:xe"
-		p:username="hr"
-		p:password="happy"
-	/>
-	
-	<!-- 디버깅 debug  -->
+    <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+       p:driverClassName="oracle.jdbc.driver.OracleDriver"
+       p:url="jdbc:oracle:thin:@localhost:1521:XE"
+       p:username="hr"
+       p:password="happy"
+    />
+    <!-- debug -->
     <bean id="dataSource" 
           class="net.sf.log4jdbc.Log4jdbcProxyDataSource"> 
       <constructor-arg ref="ds" /> 
@@ -24,25 +22,21 @@
         </bean> 
       </property> 
     </bean>
-	
-	<!-- Mybatis연결  -->
-	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:dataSource-ref="dataSource"
-		p:configLocation="classpath:Config.xml"
-	/>
-	
-	<!-- DAO연결 -->
-	<bean id="ldao" class="com.sist.dao.LocationDAO"
-		p:sqlSessionFactory-ref="ssf"
-	/>
-	<bean id="ndao" class="com.sist.dao.NatureDAO"
-		p:sqlSessionFactory-ref="ssf"
-	/>
-	<bean id="sdao" class="com.sist.dao.ShopDAO"
-		p:sqlSessionFactory-ref="ssf"
-	/>
-	
-	
-
-
+    
+    <!--  MyBatis연결 -->
+    <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
+       p:dataSource-ref="dataSource"
+       p:configLocation="classpath:Config.xml"
+    />
+    <!-- DAO연결 -->
+    <bean id="ldao" class="com.sist.dao.LocationDAO"
+      p:sqlSessionFactory-ref="ssf"
+    />
+    <bean id="sdao" class="com.sist.dao.ShopDAO"
+      p:sqlSessionFactory-ref="ssf"
+    />
+    <bean id="ndao" class="com.sist.dao.NatureDAO"
+      p:sqlSessionFactory-ref="ssf"
+    />
+    
 </beans>

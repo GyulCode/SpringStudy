@@ -11,7 +11,6 @@ import com.sist.vo.*;
 
 public class MainClass {
 	public static void main(String[] args) {
-		
 	}
 	//오류 있음
 	@Test //static 
