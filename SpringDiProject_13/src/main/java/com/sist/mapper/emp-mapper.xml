@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.sist.mapper.emp-mapper">
+ <!-- 조인 -->
+ <!-- 
+ 	SELECT empno, ename, danme, loc
+ 	FROM emp, dept
+ 	WHERE emp.deptno=dept.deptno
+ 	
+ 	while(re.next()){
+ 		EmpVo vo= new empVO
+ 		vo.setEname(rs.getString(2))
+ 		vo.getDvo().setDname(rs.getString(3))
+ 		vo.getDvo().setLoc(rs.getString(4))
+ 		...
+ 	}
+ 	
+ 	MyBatis : DB연결
+ 	SQL :CURD / JOIN / 동적쿼리 / 프로시저 / 트랜잭션
+ 	            =    =              =
+ 	            중        요               함
+ 	동적쿼리 : 
+ 	#{name} = ''사용  , ${} = column명, table명 가져올때사용
+ 	
+ 	
+  -->
+  
+  <resultMap type="com.sist.vo.EmpVO" id="empMap"> <!-- 컬럼과 변수명 매칭 = resultMap -->
+  	<result column="dname" property="dvo.dname"/> <!-- 변수명  -->
+  	<result column="loc" property="dvo.loc"/>
+  </resultMap>
+  
+  <!-- 중복이 있을시 sql사용 -->
+  <sql id="select-emp">
+  	SELECT empno, ename, job, TO_CHAR(hiredate,'YYYY-MM-DD') as dbday, sal, dname, loc
+  	FROM emp, dept
+  	WHERE emp.deptno=dept.deptno
+  </sql>
+  
+  <select id="empdeptListData" resultMap="empMap" > <!-- statementType="STATEMENT"  -->
+	<include refid="select-emp"/>
+  	ORDER BY sal DESC
+  </select>
+  
+  <select id="empdeptDetailData" resultMap="empMap" parameterType="int"> 
+	<include refid="select-emp"/>
+  	AND empno=#{empno}
+  </select>
+  
+ </mapper>
+ 
+ 
+ 

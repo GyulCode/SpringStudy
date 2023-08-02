@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.sist.mapper.emp-mapper">
+ 	<select id="empGetNameDate" resultType="String">
+ 		SELECT ename FROM emp
+ 	</select>
+ 	<select id="empInfoData" resultType="EmpVO" parameterType="hashmap">
+ 		
+ 		<!-- 
+ 			prefix : 첨부 (앞)
+ 			suffix : 첨부 (뒤)
+ 			
+ 			prefixOverrides : 제거 앞
+ 			suffixOverrides : 제거 뒤
+ 			
+ 			<if test="name!=null">
+ 				name LIKE '%%'
+ 			</if>
+ 			<if test="subject!=null">
+ 				OR subject LIKE '%%'
+ 			</if>
+ 			<if test="content!=null">
+ 				OR content LIKE '%%'
+ 			</if>
+ 			=> name을 빼고 검색시 OR가 먼저 오는 문제가 생김 => prefix로 제거
+ 		-->
+ 		
+ 		SELECT empno, ename, job, TO_CHAR(hiredate,'YYYY-MM-DD') as dbday, sal, comm, deptno
+ 		FROM emp
+ 		WHERE 
+ 		<trim prefix="WHERE ename IN(" suffix=")" suffixOverrides=")" prefixOverrides="(">
+ 			<foreach collection="names" item="name" open="(" close=")" separator=",">
+ 				#{name}
+ 			</foreach>
+ 		</trim>
+ 	</select>
+ 
+ </mapper>

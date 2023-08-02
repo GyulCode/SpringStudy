@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- Processes application requests -->
+	<!-- Controller(컨트롤러) 등록되는 위치임(톰캣에 의해서 구동) -->
+	<!-- 
+		public class DispatcherServlet extends HttpServlet
+		{
+			xml을 쓰면 얘가 관리하고 있고 여기 있는 파일은 디스패쳐가 요청함
+			private WebApplicationContext wc; 얘가 등록된 클래스를 관리한다. 대상은 Model, DAO, Service, Mananger...
+			public void init(ServletContext config)
+			{
+				XML을 읽어온다
+				String Path=Config.getInitParameter(contextConfigLocation) //init-param이걸 읽어옴
+				if(path==null)
+				{
+					path="/WEB-INF/<servlet-name>-servlet.xml"
+					-> dispatcher-servlet.xml 디폴트 파일 우리는 servlet-name을 아까 dispatcher로 설정해서 이런 형태임
+				}
+				wc= new WebApplicationContext(path)
+				ApplicationContext app=new ClassPahtApplication("app.xml")
+			}
+			public void service(HttpServletRequest request, HttpServletResponse response)
+			{
+				사용자 요청을 처리하는 메소드
+			}
+			public void destroy()
+			{
+				새로고침, 페이지 이동시에 메모리에서 해제하는 역할
+			}
+		}
+	 -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name><!-- 아래에 서블릿 매핑이랑 이름이 동일해야함 -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/application-*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 한글변환 등록 -->
+	<filter>
+	  <filter-name>encodingFilter</filter-name>
+	  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	  <init-param>
+	    <param-name>encoding</param-name>
+	    <param-value>UTF-8</param-value>
+	  </init-param>
+	</filter>
+
+	<filter-mapping>
+	  <filter-name>encodingFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+</web-app>

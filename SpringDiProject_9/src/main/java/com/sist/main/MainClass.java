@@ -67,7 +67,7 @@ public class MainClass {
 				System.out.println("학생 이름 입력 : ");
 				String name=sc.next();
 				List<StudentVO> list=dao.studentFindData(name);
-				if(name==null) {
+				if(list.size()==0) {
 					System.out.println("등록된 학생이 없습니다.");
 				}else {
 					for(StudentVO vo:list) {
@@ -104,15 +104,27 @@ public class MainClass {
 				break;
 			case 5:
 			{
-				System.out.println("수정할 학번 입력 : ");
-				int hakbun=sc.nextInt();
-				
-				StudentVO vo=new StudentVO();
-				
-				dao.studentUpdate(vo);
-				String nameString=sc.next();
-				
-			}
+        		System.out.print("이름 입력:");
+        		String name=sc.next();
+        		System.out.print("국어 입력:");
+        		int kor=sc.nextInt();
+        		System.out.print("영어 입력:");
+        		int eng=sc.nextInt();
+        		System.out.print("수학 입력:");
+        		int math=sc.nextInt();
+        		System.out.print("학번 입력:");
+        		int hakbun=sc.nextInt();
+        		
+        		StudentVO vo=new StudentVO();
+        		vo.setName(name);
+        		vo.setKor(kor);
+        		vo.setMath(math);
+        		vo.setEng(eng);
+        		vo.setHakbun(hakbun);
+        		
+        		dao.studentUpdate(vo);
+        		System.out.println("수정 완료");
+        	}
 				break;
 			case 6:
 			{
