@@ -2,6 +2,7 @@ package com.sist.dao;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -89,6 +90,107 @@ public class BoardDAO {
 		vo.setRoot(root);
 		mapper.boardReplyInsert(vo);
 		mapper.boardDepthIncrement(root);
+	}
+	
+	//수정하기 위한 상세보기
+	public BoardVO boardUpdateData(int no) {
+		return mapper.boardDetailData(no);
+	}
+	
+	/*@Select("SELECT pwd FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public String boardGetPassword(int no);
+	
+	@Update("UPDATE springReplyBoard SET "
+			+ "name=#{name}, subject=#{subject}, content=#{content} "
+			+ "Where no=#{no}")*/
+	public boolean boardUpdate(BoardVO vo) {
+		
+		boolean bCheck=false;
+		String db_pwd=mapper.boardGetPassword(vo.getNo());
+		if(db_pwd.equals(vo.getPwd())) {
+			bCheck=true;
+			mapper.boardUpdate(vo);
+		}
+		return bCheck;
+	}
+	
+	/*
+	@Select("SELECT root, depth, FROM, springReplyBoard "
+			+ "WHERE no=#{no}")
+	public BoardVO boardInfoData(int no);
+	@Update("UPDATE springReplyBoard SET "
+			+ "+subject='삭제된 게시물입니다.', content='삭제된 게시물입니다.' "
+			+ "WHERE no=#{no}")
+	public void boardSubjectUpdate(int no);
+	@Delete("DELETE FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public void boardDelete(int no);
+	@Update("UPDATE springreplyBoard SET "
+			+ "depth=depth-1 "
+			+ "where no=#{no}")
+			
+	
+	1. 트랜잭션 application-datasource.xml에 추가해줘야함
+		여러개의 sql문(DML 문장들의 집합)을 하나로 처리
+	2.<!-- 트랜잭션 선언 -->
+		<tx:annotation-driven/>
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+			p:dataSource-ref="ds"
+		/>
+	3. 전파
+		propagation = Propagation.REQUIRED - 기본형
+		트랜잭션을 사용중이라면 -> 다음에 다시 재사용 가능하게 만든다 -> 시작할때만 한번 생성
+		public void delete(){
+			try{
+				conn.setAutoCommit(false)
+				--------------------
+				개발자 소스코드
+				--------------------
+				conn.Commit()
+			}catch{
+				conn.rollback()
+			}finally{
+				conn.setAutoCommit(true)
+			}
+		}
+		
+		
+		
+		Propagation.REQUIRED_NEW : 트랜잭션을 새롭게 생성
+		Propagation.NEVER : 트랜잭션을 무조건 설정
+		
+		타겟객체 대신 프록시사용(AOP에서 클래스 대용을 하나 만듬)
+		
+		 rollbackFor = Exception.class 에러발생시 에러 내용 보여달라 요청
+	
+	 */
+	@Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+	public boolean boardDelete(int no, String pwd) {
+		boolean bCheck;
+		// 비밀번호 읽기
+		String db_pwd=mapper.boardGetPassword(no);
+		if(db_pwd.equals(pwd)) {
+			//depth 게시물 갯수
+			bCheck=true; 
+			BoardVO vo=mapper.boardInfoData(no);
+			if(vo.getDepth()==0)
+			{
+				mapper.boardDelete(no);;
+			} else{
+				mapper.boardSubjectUpdate(no);
+				mapper.boardDepthDecrement(vo.getRoot());
+			}
+		}
+		else {
+			bCheck=false;
+		}
+		return bCheck;
+		
+	}
+	
+	public List<BoardVO> boardFindData(Map map){
+		return mapper.boardFindData(map);
 	}
 
 }

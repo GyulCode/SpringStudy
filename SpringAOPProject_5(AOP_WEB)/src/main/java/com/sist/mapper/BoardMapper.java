@@ -2,6 +2,7 @@ package com.sist.mapper;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -60,7 +61,59 @@ public interface BoardMapper {
 			
 	
 	//수정
-	//삭제 === 트랜잭션
-	//다중검색 (동적쿼리)
+	@Select("SELECT pwd FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public String boardGetPassword(int no);
+	@Update("UPDATE springReplyBoard SET "
+			+ "name=#{name}, subject=#{subject}, content=#{content} "
+			+ "Where no=#{no}")
+	public void boardUpdate(BoardVO vo);
+	
+	
+	//삭제 === 트랜잭션(스프링 AOP)
+	@Select("SELECT root, depth FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public BoardVO boardInfoData(int no);
+	@Update("UPDATE springReplyBoard SET( "
+			+ "+subject='삭제된 게시물입니다.', content='삭제된 게시물입니다.') "
+			+ "WHERE no=#{no}")
+	public void boardSubjectUpdate(int no);
+	@Delete("DELETE FROM springReplyBoard "
+			+ "WHERE no=#{no}")
+	public void boardDelete(int no);
+	@Update("UPDATE springreplyBoard SET "
+			+ "depth=depth-1 "
+			+ "where no=#{no}")
+	public void boardDepthDecrement(int no);
+	
+	
+	
+	//다중검색 (동적쿼리) <trim prefixOverride=\"OR\"> name LIKE OR content LIKE 7가지 경우에서 OR가 맨앞에 있는거 제거 
+	// fd=='N'.toString() *주의* OR를 prefix로 모두 붙이고 override로 맨앞 제거
+	@Select({
+		"<script>"
+			+ "SELECT no, subject, name, content, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit "
+			+ "FROM springReplyBoard "
+			+ "WHERE "
+			+ "<trim prefixOverride=\"OR\">"
+				+ "<foreach collection=\"fsArr\" item=\"fd\">"
+				+ "<trim prefix=\"OR\">"
+				+ "<choose>"
+				+ "<when test=\"fd=='N'.toString()\">"
+				+ "name LIKE '%'||#{ss}||'%'"
+				+ "</when>"
+				+ "<when test=\"fd=='S'.toString()\">"
+				+ "subject LIKE '%'||#{ss}||'%'"
+				+ "</when>"
+				+ "<when test=\"fd=='C'.toString()\">"
+				+ "content LIKE '%'||#{ss}||'%'"
+				+ "</when>"
+				+ "</choose>"
+				+ "</trim>"
+				+ "</foreach>"
+			+ "</trim>"
+		+ "</script>"
+	}) 
+	public List<BoardVO> boardFindData(Map map);
 	
 }
