@@ -11,26 +11,25 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .container{
-margin-top: 50px;
-
+   margin-top: 50px;
 }
 .row{
-margin:0px, auto;
-width:960px;
+  margin: 0px auto;
+  width: 960px;
 }
 </style>
 </head>
 <body>
-	<div class="container" v-model="msg" id="app">
-		<div class="row">
-			<div>{{msg}}</div>
-		</div>
-	</div>
-	<div class="container" v-model="msg" id="app2">
-		<div class="row">
-			<div>{{msg}</div>
-		</div>
-	</div>
+	<div class="container" id="app">
+	    <div class="row">
+	     	<div>{{msg}}</div>
+	    </div>
+  	</div>
+  	<div class="container" id="app2">
+	    <div class="row">
+	     	<div>{{msg}}</div>
+	    </div>
+ 	 </div>
 	<script>
 		new Vue({
 			el:'#app',

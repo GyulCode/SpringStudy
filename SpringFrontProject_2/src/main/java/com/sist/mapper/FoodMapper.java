@@ -24,8 +24,12 @@ public interface FoodMapper {
 	@Select("SELECT fno,name,poster,score,num "
 		   + "FROM (SELECT fno,name,poster,score,rownum as num "
 		   + "FROM (SELECT fno,name,poster,score "
-		   + "FROM food_location ORDER BY fno ASC WHERE address LIKE '%'||#{address}||'%')) "
-		   + "WHERE num BETWEEN #{start} AND #{end}")
-	public List<FoodLocationVO> foodFindData(Map map);	
+		   + "FROM food_location WHERE address LIKE '%'||#{address}||'%')) "
+		   + "WHERE num BETWEEN #{start} AND #{end} ORDER BY fno ASC")
+	public List<FoodLocationVO> foodFindData(Map map);
+	
+	@Select("SELECT CEIL(COUNT(*)/12.0) FROM food_location "
+			+ "WHERE address LIKE '%'||#{address}||'%'")
+	public int foodFindTotalPage(String address);
 	
 }

@@ -6,16 +6,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-<script src="https://unpkg.com/vue@3"></script>  <!-- vue3버전 -->
+<script src="https://unpkg.com/vue@3"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .container{
-margin-top: 50px;
+   margin-top: 50px;
 }
 .row{
-margin:0px, auto;
-width:960px;
+  margin: 0px auto;
+  width: 960px;
 }
 </style>
 </head>

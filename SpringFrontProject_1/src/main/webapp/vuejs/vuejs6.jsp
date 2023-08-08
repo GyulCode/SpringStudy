@@ -11,11 +11,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style type="text/css">
 .container-fluid{
-margin-top: 50px;
+   margin-top: 50px;
 }
 .row{
-margin:0px, auto;
-width:100%;
+  margin: 0px auto;
+  width: 100%;
 }
 </style>
 </head>

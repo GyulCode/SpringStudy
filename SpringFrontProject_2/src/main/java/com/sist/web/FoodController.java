@@ -19,5 +19,11 @@ public class FoodController {
 	public String foodList() {
 		return "food/list";
 	}
+	
+	@GetMapping("food/find.do")
+	public String food_find() {
+		return "food/find";
+	}
+	
 
 }
