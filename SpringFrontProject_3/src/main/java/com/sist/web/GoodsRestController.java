@@ -63,6 +63,7 @@ public class GoodsRestController {
 		}
 		return result;
 	}
+	
 	@GetMapping(value="goods/detail_vue.do",produces = "text/plain;charset=UTF-8")
 	public String goods_detail(int no) {
 		String result="";
