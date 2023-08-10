@@ -13,45 +13,40 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
 .container{
-	margin-top:50px;
-	
+  margin-top: 50px;
 }
 .row{
- 	margin:0px auto;
- 	width:960px;
+  margin: 0px auto;
+  width: 960px;
 }
 </style>
 </head>
 <body>
-	<div class="container">
-		<h1 class="text-center">{{message}}</h1>
-		<my-com1 v-bind:pdata="mycomdata"></my-com1>
-		<my-com2 v-bind:pdata="mycomdata"></my-com2>
-		<my-com1></my-com1>
-		<my-com1></my-com1>
-	</div>
-	
-	<template id="aaa">
-		<h1>Hello Template</h1>
-		<h3>{{pdata}}</h3>
-	</template>
-	
-	<script>
-		Vue.component('my-com1',{
-			props:['pdata'],
-			template:'#aaa'
-		})
-		Vue.component('my-com2',{
-			props:['pdata'],
-			template:'<h3>{{pdata}}</h3>'
-		})
-		new Vue({
-			el:'.container',
-			data:{
-				message:'Hello Component',
-				mycomdata:'데이터 출력'
-			}
-		})
-	</script>
+  <div class="container">
+    <h1 class="text-center">{{message}}</h1>
+    <my-com1 v-bind:pdata="mycomdata"></my-com1>
+    <my-com2 v-bind:pdata="mycomdata"></my-com2>
+  </div>
+  <template id="aaa">
+    <h1>Hello Template</h1>
+    <h3>{{pdata}}</h3>
+  </template>
+  <script>
+    Vue.component('my-com1',{
+    	props:['pdata'],
+    	template:'#aaa'
+    })
+    Vue.component('my-com2',{
+    	props:['pdata'],
+    	template:'<h3>{{pdata}}</h3>'
+    })
+    new Vue({
+    	el:'.container',
+    	data:{
+    		message:'Hello Component!!',
+    		mycomdata:'데이터 출력'
+    	}
+    })
+  </script>
 </body>
 </html>
