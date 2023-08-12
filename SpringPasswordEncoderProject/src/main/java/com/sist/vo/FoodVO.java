@@ -9,5 +9,6 @@ public class FoodVO {
 	private int fno,cno;
 	private String name,address,phone,type,price,parking,time,menu,poster;
 	private double score;
+	private String sessionId;
 
 }

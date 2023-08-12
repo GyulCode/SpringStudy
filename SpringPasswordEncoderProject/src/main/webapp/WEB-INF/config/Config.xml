@@ -7,8 +7,10 @@
  	<typeAliases>
  		<typeAlias type="com.sist.vo.CategoryVO" alias="CategoryVO"/>
  		<typeAlias type="com.sist.vo.FoodVO" alias="FoodVO"/>
+ 		<typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/>
  	</typeAliases>
  	<mappers>
  		<mapper resource="com/sist/dao/food-mapper.xml"/>
+ 		<mapper resource="com/sist/dao/reply-mapper.xml"/>
  	</mappers>
  </configuration>

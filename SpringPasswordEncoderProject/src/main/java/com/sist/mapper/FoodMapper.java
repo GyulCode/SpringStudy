@@ -15,5 +15,8 @@ public interface FoodMapper {
 	
 	//<select id="foodListData" resultType="FoodVO" parameterType="int">
 	public List<FoodVO> foodListData(int cno);
+	
+	//<select id="foodDetailData" resultType="FoodVO" parameterType="int">
+	public FoodVO foodDetailData(int fno);
 
 }

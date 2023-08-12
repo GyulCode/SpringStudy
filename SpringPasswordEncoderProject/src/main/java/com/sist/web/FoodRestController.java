@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +45,6 @@ public class FoodRestController {
 	public String food_list(int cno) throws Exception{
 		
 		List<FoodVO> list=dao.foodListData(cno);
-		System.out.println(list);
 		for(FoodVO vo:list) {
 			String poster=vo.getPoster();
 			poster=poster.substring(0,poster.indexOf("^"));
@@ -58,6 +59,23 @@ public class FoodRestController {
 		ObjectMapper mapper=new ObjectMapper(); //Àè½¼¹ý ÀÌÀüÀº array
 		String json=mapper.writeValueAsString(list);
 		return json;
+	}
+	
+	@GetMapping(value="food/food_detail_vue.do", produces="text/plain;charset=UTF-8")
+	public String food_detail(int fno, HttpSession session) throws Exception{
+		
+		String id=(String)session.getAttribute("id");
+		String result="";
+		FoodVO vo=dao.foodDetailData(fno);
+		String addr=vo.getAddress();
+		addr=addr.substring(0,addr.indexOf("Áö¹ø"));
+		vo.setAddress(addr);
+		vo.setSessionId(id);
+		
+		ObjectMapper mapper=new ObjectMapper(); 
+		result=mapper.writeValueAsString(vo);
+		
+		return result;
 	}
 	
 
