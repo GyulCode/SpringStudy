@@ -32,12 +32,15 @@
 		<div class="row">
 			<category1 v-bind:cate1="cate_list1"></category1>
 		</div>
+		
 		<div style="height:20px"></div>
+		
 		<h3>지역별 맛집리스트</h3>
 		<hr>
 		<div class="row">
 			<category2 v-bind:cate2="cate_list2"></category2>
 		</div>
+		
 		<h3>메뉴별 맛집리스트</h3>
 		<hr>
 		<div class="row">
