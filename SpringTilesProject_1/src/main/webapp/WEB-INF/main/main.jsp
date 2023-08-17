@@ -10,7 +10,9 @@
 <body>
 	<table border=1 bordercolor="black" width=700 height=600>
 		<tr>
-			<td colspan ="2" align="center" height=100><tiles:insertAttribute name="header"/></td>
+			<td colspan ="2" align="center" height=100>
+				<tiles:insertAttribute name="header"/>
+			</td>
 		</tr>
 		<tr>
 			<td width=200 height="400"> <tiles:insertAttribute name="menu"/></td>

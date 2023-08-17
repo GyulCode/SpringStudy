@@ -5,5 +5,26 @@
  
  <mapper namespace="com.sist.mapper.FoodMapper">
  	
+ 	<select id="foodFindData" resultType="FoodVO" parameterType="hashmap">
+ 		SELECT fno, name, poster, num
+ 		FROM (SELECT fno, name, poster, rownum as num
+ 		FROM (SELECT fno, name, poster 
+ 		FROM food_location
+ 			<if test="column!='all'">
+ 				WHERE ${column} LIKE '%'||#{fd}||'%'
+ 			</if>
+ 			ORDER BY fno ASC
+ 		))
+ 		WHERE num BETWEEN #{start} AND #{end}
+ 	</select>
+ 	
+ 	<select id="foodFindTotalPage" resultType="int"	parameterType="hashmap">
+ 		SELECT CEIL(COUNT(*)/20.0)
+ 		FROM food_location
+ 		<if test="column!='all'">
+ 				WHERE ${column} LIKE '%'||#{fd}||'%'
+ 		</if>
+ 	</select>
  	
  </mapper>
+ 

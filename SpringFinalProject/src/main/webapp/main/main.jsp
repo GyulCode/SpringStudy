@@ -25,7 +25,8 @@ Licence URI: https://www.os-templates.com/template-terms
 
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a> 
 <!-- JAVASCRIPTS --> 
-<script src="../layout/scripts/jquery.min.js"></script> 
+<script src="../layout/scripts/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="../layout/scripts/jquery.backtotop.js"></script> 
 <script src="../layout/scripts/jquery.mobilemenu.js"></script> 
 <script src="../layout/scripts/jquery.flexslider-min.js"></script>

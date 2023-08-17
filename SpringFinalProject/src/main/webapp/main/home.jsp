@@ -50,7 +50,7 @@
         <article class="service"><i class="icon fa fa-hospital-o"></i>
           <h6 class="heading"><a href="#">Lorem Ipsum Dolor</a></h6>
           <p>Aenean semper elementum tellus, ut placerat leo. Quisque vehicula, urna sit amet.</p>
-          <footer><a href="#">Read More &raquo;</a></footer>
+          <footer><a :href="#">Read More &raquo;</a></footer>
         </article>
       </li>
     </ul>
@@ -61,7 +61,7 @@
       <ul class="slides">
         <li v-for="vo, index in cate_list" v-if="index >=0 && index<12">
           <figure><img class="radius-10 btmspace-10" :src="vo.poster" :title="vo.subject" >
-            <figcaption><a href="#">{{vo.title}}</a></figcaption>
+            <figcaption><a :href="'../food/food_list.do?cno='+vo.cno">{{vo.title}}</a></figcaption>
           </figure>
       </ul>
     </div>
@@ -71,7 +71,7 @@
       <ul class="slides">
         <li v-for="vo, index in cate_list" v-if="index >=12 && index<18">
           <figure><img class="radius-10 btmspace-10" :src="vo.poster" :title="vo.subject">
-            <figcaption><a href="#">{{vo.title}}</a></figcaption>
+            <figcaption><a :href="'../food/food_list.do?cno='+vo.cno">{{vo.title}}</a></figcaption>
           </figure>
       </ul>
     </div>
@@ -81,7 +81,7 @@
       <ul class="slides">
         <li v-for="vo, index in cate_list" v-if="index>=18 && index<30">
           <figure><img class="radius-10 btmspace-10" :src="vo.poster" :title="vo.subject">
-            <figcaption><a href="#">{{vo.title}}</a></figcaption>
+            <figcaption><a :href="'../food/food_list.do?cno='+vo.cno">{{vo.title}}</a></figcaption>
           </figure>
       </ul>
     </div>
