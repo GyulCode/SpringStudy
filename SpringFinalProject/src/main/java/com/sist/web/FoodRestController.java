@@ -65,6 +65,7 @@ public class FoodRestController {
 		int totalpage=dao.foodFindTotalPage(map);
 		
 		final int BLOCK=10;
+		
 		int startPage=((page-1)/BLOCK*BLOCK)+1;
 		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
 		if(endPage>totalpage) {

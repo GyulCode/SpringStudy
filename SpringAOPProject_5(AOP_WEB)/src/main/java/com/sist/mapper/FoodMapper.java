@@ -7,7 +7,8 @@ import com.sist.vo.CategoryVO;
 import com.sist.vo.FoodVO;
 import com.sist.vo.SeoulVO;
 public interface FoodMapper {
-   @Select("SELECT cno,title,poster FROM food_category ORDER BY cno ASC")
+  
+	@Select("SELECT cno,title,poster FROM food_category ORDER BY cno ASC")
    public List<CategoryVO> foodCategoryData();
    @Select("SELECT fno,name,poster,rownum "
 		  +"FROM (SELECT fno,name,poster "
