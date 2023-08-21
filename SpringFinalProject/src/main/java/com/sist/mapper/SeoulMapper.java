@@ -1,12 +1,21 @@
 package com.sist.mapper;
+import java.util.*;
 
-import java.util.List;
-import java.util.Map;
+import org.apache.ibatis.annotations.Select;
 
-import com.sist.vo.*;
+import com.sist.vo.SeoulVO;
 public interface SeoulMapper {
+  /*
+   *      <select id="seoulLocationData" resultType="SeoulVO" parameterType="hashmap">
+		    SELECT no,poster,title,num
+		    FROM (SELECT no,poster,title,rownum as num 
+		    FROM (SELECT no,poster,title 
+		    FROM seoul_location ORDER BY no ASC))
+		    WHERE num BETWEEN #{start} AND #{end}
+		  </select>
+   */
+	public List<SeoulVO> seoulListData(Map map);
 	
-	public List<SeoulVO> souelListData(Map map);
-	
-
+	@Select("SELECT CEIL(COUNT(*)/20.0) FROM ${table_name}")
+	public int seoulTotalPage(Map map);
 }

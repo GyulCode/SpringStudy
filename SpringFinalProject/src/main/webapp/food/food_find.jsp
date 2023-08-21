@@ -28,8 +28,10 @@
   <main class="container clear"> 
     <!-- main body --> 
     <div class="content"> 
+    
      <div id="gallery">
         <figure>
+        
           <header class="heading inline">
            <select class="input-sm" v-model="column">
             <option value="all">전체</option>
@@ -41,14 +43,15 @@
            <input type=button class="btn btn-sm btn-primary"
             value="검색" @click="find()">
           </header>
+          
           <ul class="nospace clear">
             <li v-for="vo,index in food_list" :class="index%4==0?'one_quarter first':'one_quarter'">
             	<img :src="vo.poster" :title="vo.name" class="images" @click="foodDetail(vo.fno,true)">
             </li>
           </ul>
-          
         </figure>
       </div>
+      
       <%-- class="current" --%>
       <nav class="pagination">
         <ul>
@@ -60,6 +63,7 @@
      </div>
       
       <div id="dialog" title="맛집 상세보기" v-if="isShow">
+        
         <table class="table">
           <tr>
            <td class="text-center" v-for="image in posters">
@@ -67,6 +71,7 @@
            </td>
           </tr>
         </table>
+        
         <table class="table">
           <tr>
            <td colspan="2">
