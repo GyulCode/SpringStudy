@@ -28,7 +28,7 @@ public class FoodRestController {
 		List<CategoryVO> list=dao.foodCategoryListData(map);
 		ObjectMapper mapper=new ObjectMapper();
 		
-		String json=mapper.writeValueAsString(list); //Á¦ÀÌ½¼ Àè½¼À¸·Î º¯°æ??
+		String json=mapper.writeValueAsString(list); //Àè½¼ : Á¦ÀÌ½¼ -> Object ¶Ç´Â Object -> Á¦ÀÌ½¼
 		return json;
 		
 	}
@@ -53,7 +53,7 @@ public class FoodRestController {
 			
 			String address=vo.getAddress();
 			address=address.substring(0,address.indexOf("Áö¹ø"));
-			vo.setAddress(address);;
+			vo.setAddress(address);
 		}
 		
 		ObjectMapper mapper=new ObjectMapper(); //Àè½¼¹ı ÀÌÀüÀº array
@@ -67,8 +67,10 @@ public class FoodRestController {
 		String id=(String)session.getAttribute("id");
 		String result="";
 		FoodVO vo=dao.foodDetailData(fno);
+		
 		String addr=vo.getAddress();
 		addr=addr.substring(0,addr.indexOf("Áö¹ø"));
+		
 		vo.setAddress(addr);
 		vo.setSessionId(id);
 		

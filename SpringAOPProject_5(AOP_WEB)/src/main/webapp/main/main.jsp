@@ -9,6 +9,7 @@
 <link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
+
 <jsp:include page="../main/header.jsp"/>
 <jsp:include page="${main_jsp}"/>
 <jsp:include page="../main/footer.jsp"/>

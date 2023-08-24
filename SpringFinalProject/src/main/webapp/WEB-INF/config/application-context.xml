@@ -28,7 +28,9 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/"
 		p:suffix=".jsp"
-		
 	/>
+	<bean id="multipartResolver"
+	 class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
 
 </beans>

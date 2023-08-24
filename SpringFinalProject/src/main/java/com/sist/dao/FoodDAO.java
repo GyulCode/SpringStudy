@@ -29,6 +29,7 @@ public class FoodDAO {
    public List<FoodVO> foodListData(int cno){
 	   return mapper.foodListData(cno);
    }
+   
    // <select id="foodFindData" resultType="FoodVO" parameterType="hashmap">
    public List<FoodVO> foodFindData(Map map)
    {

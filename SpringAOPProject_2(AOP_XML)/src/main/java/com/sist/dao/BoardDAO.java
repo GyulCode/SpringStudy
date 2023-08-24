@@ -1,6 +1,7 @@
 package com.sist.dao;
 
 public class BoardDAO {
+	
 	public String find(String name) {
 		System.out.println("Find ผ๖วเ");
 		return name;

@@ -28,6 +28,7 @@
 <body>
   <div class="container">
     <h3></h3>
+    
     <div class="row">
       <%-- 이미지 5개 --%>
       <table class="table">
@@ -38,9 +39,11 @@
         </tr>
       </table>
     </div>
+    
     <div style="height:10px"></div>
     <div class="row">
       <div class="col-sm-7">
+        
         <%-- 상세정보 --%>
         <table class="table">
           <tr>
@@ -81,6 +84,7 @@
             <td width=80%>{{food_detail.phone}}</td>
           </tr>
         </table>
+        
         <%-- 댓글 Vue=CURD --%>
         <div style="height:20px"></div>
         <table class="table">
@@ -105,6 +109,7 @@
 								<pre style="white-space:pre-wrap; background-color: white; border:none;">{{re.msg}}</pre>
 							</td>
 						</tr>
+						
 						<tr style="display:none" :id="'reply'+re.no" class="updates">
 							<td colspan="2">
 								<textarea rows="3" cols="55" style="float:left" ref="upmsg" v-model="msg">{{re.msg}}</textarea>
@@ -113,10 +118,12 @@
 			        			@click="replyUpdate(re.no)">
 							</td>
 						</tr>
+						
 					</table>
 				</td>
 			</tr>
         </table>
+        
         <table class="table" v-if="food_detail.sessionId!=null">
         	<tr>
         		<td>
@@ -127,6 +134,7 @@
         	</tr>
         </table>
       </div>
+      
       <div class="col-sm-5">
         <%-- 지도 출력 위치 --%>
         <div id="map" style="width:100%;height:350px;"></div>
@@ -293,7 +301,6 @@
 				   $('#reply'+no).hide();
 				   $('#up'+no).val("수정");
 				   this.no=0;
-				   
 			   }
 		   },
 		   replyUpdate:function(no){

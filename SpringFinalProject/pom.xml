@@ -20,28 +20,26 @@
 		    <url>http://mesir.googlecode.com/svn/trunk/mavenrepo</url>
 		</repository>
 	</repositories>
-	
-	
-	
 	<dependencies>
-	    <!-- ojdbc(Maven에서 사용이 안된다)-->
-	    <!-- 시스템 경로 줄때 사용  -->
-	   <!--  <dependency>
-		    <groupId>org.snu.ids.ha</groupId>
-		    <artifactId>kokoma</artifactId>
-		    <version>1.0</version>
-		    <scope>system</scope>
-		    <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/org.snu.ids.ha.jar</systemPath>
-		</dependency> -->
+	  
+	   <dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.10</version>
+		</dependency>
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-core</artifactId>
 		    <version>2.9.10</version>
 		</dependency>
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.10</version>
+	    <!-- ojdbc(Maven에서 사용이 안된다)-->
+	    <!-- 시스템 경로 줄때 사용  -->
+	   <dependency>
+		    <groupId>org.snu</groupId>
+		    <artifactId>kokoma</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/org.snu.ids.ha.jar</systemPath>
 		</dependency>
 		<dependency>
 		    <groupId>com.oracle.database.jdbc</groupId>
@@ -492,12 +490,12 @@
 		    <version>0.2.7</version>
 		</dependency>
 		
-		<!-- security  -->
-		<dependency>
+		<!-- security -->
+		 <dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-core</artifactId>
 		    <version>5.1.5.RELEASE</version>
-		</dependency>
+		</dependency> 
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-web</artifactId>
@@ -518,13 +516,19 @@
 		    <artifactId>spring-security-taglibs</artifactId>
 		    <version>5.1.5.RELEASE</version>
 		</dependency>
-		
+		<!-- 자바 메일 -->
 		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>1.4.7</version>
+         <groupId>javax.mail</groupId>
+         <artifactId>javax.mail-api</artifactId>
+         <version>1.4.7</version>
+        </dependency>
+        <dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.1</version>
 		</dependency>
-		<!-- 채팅 -->
+        
+		<!-- 자바 웹소켓 -->
 		<dependency>
 		    <groupId>javax.websocket</groupId>
 		    <artifactId>javax.websocket-api</artifactId>
@@ -532,8 +536,6 @@
 		    <scope>provided</scope>
 		</dependency>
 		
-		
-				     
 	</dependencies>
 
     <build>
@@ -581,3 +583,4 @@
         </plugins>
     </build>
 </project>
+	

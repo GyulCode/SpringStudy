@@ -15,6 +15,7 @@ public interface BoardMapper {
 		  +"FROM springReplyBoard ORDER BY group_id DESC,group_step ASC)) "
 		  +"WHERE num BETWEEN #{start} AND #{end}")
    public List<BoardVO> boardListData(Map map);
+   
    @Select("SELECT CEIL(COUNT(*)/10.0) FROM springReplyBoard")
    public int boardTotalPage();
    

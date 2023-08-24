@@ -66,11 +66,14 @@ public class FoodRestController {
 	   Map map=new HashMap();
 	   map.put("column",column);
 	   map.put("fd", fd);
+	   System.out.println(column);
+	   System.out.println(fd);
 	   int rowSize=20;
 	   int start=(rowSize*page)-(rowSize-1);
 	   int end=rowSize*page;
 	   map.put("start", start);
 	   map.put("end", end);
+	   
 	   List<FoodVO> list=dao.foodFindData(map);
 	   for(FoodVO vo:list)
 	   {

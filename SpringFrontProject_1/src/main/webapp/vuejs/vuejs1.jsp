@@ -47,7 +47,7 @@ String -> 메모리와연결, StringBuffer
 		v-if/ v-else
 		v-show
 	-> 이벤트
-		v-on:click -> <button v-on:click="aaa()">
+		v-on:click -> <button v-on:click="aaa()"> -> @click
 		v-on:change
 	-> 양방향 통신(Vue)
 		AngularJS -> GO(제이스 고슬링), C#, Java

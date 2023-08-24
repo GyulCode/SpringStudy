@@ -25,7 +25,7 @@
            <a href="insert.do" class="btn btn-sm btn-danger">새글</a>
           </td>
         </tr>
-      </table>
+   </table>
       <table class="table">
        <tr>
          <th width="10%" class="text-center">번호</th>

@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Select;
 
 import com.sist.vo.CategoryVO;
 import com.sist.vo.FoodVO;
-import com.sist.vo.ReplyVO;
 public interface FoodMapper {
    @Select("SELECT cno,title,poster,subject "
 		  +"FROM food_category "
@@ -20,8 +19,10 @@ public interface FoodMapper {
 		   +"FROM food_house "
 		   +"WHERE cno=#{cno}")
    public List<FoodVO> foodListData(int cno);
+   
    // <select id="foodFindData" resultType="FoodVO" parameterType="hashmap">
    public List<FoodVO> foodFindData(Map map);
+   
    // <select id="foodFindTotalPage" resultType="int" parameterType="hashmap">
    public int foodFindTotalPage(Map map);
    

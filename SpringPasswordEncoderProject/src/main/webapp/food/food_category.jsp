@@ -78,7 +78,7 @@ td{
 						            	<img :src="fvo.poster" style="width:150px;height: 100px">
 						            </a>
 						          	</td>
-						          	<td width=70%><h6><a href="'../food/food_detail.do?fno='+fvo.fno">{{fvo.name}}</a>&nbsp;<span style="color:orange">{{fvo.score}}</span></h6></td>
+						          	<td width=70%><h6><a :href="'../food/food_detail.do?fno='+fvo.fno">{{fvo.name}}</a>&nbsp;<span style="color:orange">{{fvo.score}}</span></h6></td>
 						        </tr>
 						        <tr>
 						            <td width=70%>{{fvo.address}}</td>
