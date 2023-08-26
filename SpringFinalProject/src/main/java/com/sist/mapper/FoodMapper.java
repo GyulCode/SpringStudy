@@ -37,4 +37,15 @@ public interface FoodMapper {
    public FoodVO foodDetailHouseData(int fno);
    
    
+   //맛집추천 - recommand.jsp
+   @Select("SELECT DISTINCT name FROM food_location WHERE LENGTH(name)>1")
+   public List<String> foodNameGetData();
+   // => 시
+   //실제정보
+   
+   @Select("SELECT fno, name, poster, FROM food_location "
+   		+ "WHERE name=#{name} AND rownum<=1")
+   public FoodVO foodRecommandInfoData(String name);
+   
+   
 }
