@@ -9,10 +9,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.sist.dao.*;
 import com.sist.vo.*;
 
+
 public class MainClass {
 	public static void main(String[] args) {
 	}
-	//¿À·ù ÀÖÀ½
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Test //static 
 	public void locationMain() {
 		ApplicationContext app= new ClassPathXmlApplicationContext("app.xml");
@@ -27,7 +28,7 @@ public class MainClass {
 	public void locationDetail() {
 		
 		Scanner sc=new Scanner(System.in);
-		System.out.println("¸í¼Ò ¹øÈ£ ÀÔ·Â : ");
+		System.out.println("ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½Ô·ï¿½ : ");
 		int no=sc.nextInt();
 		
 		ApplicationContext app= new ClassPathXmlApplicationContext("app.xml");
