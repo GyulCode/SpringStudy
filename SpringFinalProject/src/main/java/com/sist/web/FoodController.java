@@ -25,20 +25,20 @@ public class FoodController {
 	   return "main/main";
    }
    @GetMapping("food/food_detail_before.do")
-   // ½ºÇÁ¸µ => ¸Å°³º¯¼ö¸¦ ÀÌ¿ëÇØ¼­ ÇÊ¿äÇÑ µ¥ÀÌÅÍ³ª ³»Àå °´Ã¼ ¿äÃ» 
-   //                  ----------------- »ç¿ëÀÚ°¡ º¸³»´Â µ¥ÀÌÅÍ 
-   // ¼ø¼­´Â »ó°ü¾ø´Ù 
+   // ìŠ¤í”„ë§ => ë§¤ê°œë³€ìˆ˜ë¥¼ ì´ìš©í•´ì„œ í•„ìš”í•œ ë°ì´í„°ë‚˜ ë‚´ìž¥ ê°ì²´ ìš”ì²­ 
+   //                  ----------------- ì‚¬ìš©ìžê°€ ë³´ë‚´ëŠ” ë°ì´í„° 
+   // ìˆœì„œëŠ” ìƒê´€ì—†ë‹¤  
    public String food_detail_before(int fno,RedirectAttributes ra,
 		   HttpServletResponse response)
    {
 	   Cookie cookie=new Cookie("food_"+fno, String.valueOf(fno));
-	   // ÄíÅ° => Å¬¶óÀÌ¾ðÆ® (´ÜÁ¡:º¸¾È Ãë¾à , ¹®ÀÚ¿­¸¸ ÀúÀåÀÌ °¡´É)
-	   // ³»Àå °´Ã¼´Â ¾Æ´Ï´Ù 
-	   // ÄíÅ° »ý¼º => ÀúÀå Àå¼Ò ¼³Á¤ => ±â°£ ¼³Á¤ => Àü¼Û 
+	   // ì¿ í‚¤ => í´ë¼ì´ì–¸íŠ¸ (ë‹¨ì :ë³´ì•ˆ ì·¨ì•½ , ë¬¸ìžì—´ë§Œ ì €ìž¥ì´ ê°€ëŠ¥)
+	   // ë‚´ìž¥ ê°ì²´ëŠ” ì•„ë‹ˆë‹¤ 
+	   // ì¿ í‚¤ ìƒì„± => ì €ìž¥ ìž¥ì†Œ ì„¤ì • => ê¸°ê°„ ì„¤ì • => ì „ì†¡ 
 	   cookie.setPath("/");
-	   cookie.setMaxAge(60*60*24);// ÃÊ´ÜÀ§·Î ÀúÀå 
+	   cookie.setMaxAge(60*60*24);// ï¿½Ê´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	   response.addCookie(cookie);
-	   ra.addAttribute("fno", fno);// sendRedirect => request¸¦ ÃÊ±âÈ­ 
+	   ra.addAttribute("fno", fno);// sendRedirect => requestï¿½ï¿½ ï¿½Ê±ï¿½È­ 
 	   return "redirect:../food/food_detail.do";
    }
    @GetMapping("food/food_detail.do")
@@ -50,6 +50,6 @@ public class FoodController {
 	   model.addAttribute("id", id);
 	   model.addAttribute("fno", fno);
 	   model.addAttribute("main_jsp", "../food/food_detail.jsp");
-	   return "main/main";// forward => request¸¦ Àü¼Û 
+	   return "main/main";// forward => requestë¥¼ ì „ì†¡ 
    }
 }
